@@ -5,6 +5,7 @@
         "42coders",
         "eu-cookie-consent"
     ],
+    "type": "library",
     "homepage": "https://github.com/42coders/eu-cookie-consent",
     "license": "MIT",
     "authors": [
