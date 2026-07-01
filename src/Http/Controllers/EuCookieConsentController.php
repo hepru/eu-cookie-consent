@@ -16,12 +16,12 @@ class EuCookieConsentController extends Controller
             config('eu-cookie-consent.cookie_name'),
             "1",
             config('eu-cookie-consent.cookie_lifetime'),
-            '/', // path
+            '/' /*, // path
             null, // domain
             false, // secure
             false, // httpOnly
             false, // raw
-            'lax' // sameSite
+            'lax' // sameSite */
         );
 
         return redirect()->back()->withCookie($cookie);
