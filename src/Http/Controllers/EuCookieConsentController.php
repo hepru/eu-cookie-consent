@@ -14,7 +14,7 @@ class EuCookieConsentController extends Controller
     {
         $cookie = Cookie::make(
             config('eu-cookie-consent.cookie_name'),
-            json_encode($request->all()),
+            "1",
             config('eu-cookie-consent.cookie_lifetime'),
             '/', // path
             null, // domain
