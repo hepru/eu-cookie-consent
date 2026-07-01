@@ -10,20 +10,24 @@ use the42coders\EuCookieConsent\EuCookieConsent;
 
 class EuCookieConsentController extends Controller
 {
-    public function saveCookie(Request $request)
+    public function setCookie(Request $request)
     {
+        $cookieName = config('eu-cookie-consent.cookie_name', 'eu_cookie_consent');
+        $cookieValue = json_encode($request->all());
+        $lifetime = config('eu-cookie-consent.cookie_lifetime', 60 * 24 * 30);
+        
         $cookie = Cookie::make(
-            config('eu-cookie-consent.cookie_name'),
-            "1",
-            config('eu-cookie-consent.cookie_lifetime'),
-            '/' /*, // path
-            null, // domain
-            false, // secure
-            false, // httpOnly
-            false, // raw
-            'lax' // sameSite */
+            $cookieName,
+            $cookieValue,
+            $lifetime,
+            '/',
+            null,
+            request()->secure(),
+            false,
+            false,
+            'lax'
         );
-
+        
         return redirect()->back()->withCookie($cookie);
     }
 
